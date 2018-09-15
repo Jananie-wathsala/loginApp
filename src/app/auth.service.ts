@@ -8,8 +8,9 @@ interface MyData {
   providedIn: 'root'
 })
 export class AuthService {
+  private loggedInStatus = false;
   /*using local storage*/
-   private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
+  // private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
 
   constructor(private http: HttpClient) {
   }
@@ -20,8 +21,9 @@ export class AuthService {
   }
 
   get isLoggedIn() {
+    return this.loggedInStatus;
     /*using local storage*/
-    return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString());
+   // return JSON.parse(localStorage.getItem('loggedIn') || this.loggedInStatus.toString());
   }
 
   getUserDetails(username, password) {
